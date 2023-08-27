@@ -24,14 +24,6 @@ npx create-remix@latest --template remix-run/indie-stack
 - Linting with [ESLint](https://eslint.org)
 - Static Types with [TypeScript](https://typescriptlang.org)
 
-Not a fan of bits of the stack? Fork it, change it, and use `npx create-remix --template your/repo`! Make it your own.
-
-## Quickstart
-
-Click this button to create a [Gitpod](https://gitpod.io) workspace with the project set up and Fly pre-installed
-
-[![Gitpod Ready-to-Code](https://img.shields.io/badge/Gitpod-Ready--to--Code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/remix-run/indie-stack/tree/main)
-
 ## Development
 
 - Initial setup:
@@ -77,16 +69,34 @@ Prior to your first deployment, you'll need to do a few things:
 
   > **Note:** If you have more than one Fly account, ensure that you are signed into the same account in the Fly CLI as you are in the browser. In your terminal, run `fly auth whoami` and ensure the email matches the Fly account signed into the browser.
 
-- Create two apps on Fly, one for staging and one for production:
+- Remove docker-related and Fly config file in order to use new Fly setups:
 
   ```sh
-  fly apps create one-more-light-fda8
-  fly apps create one-more-light-fda8-staging
+  rm -f Dockerfile .dockerignore fly.toml
   ```
 
-  > **Note:** Make sure this name matches the `app` set in your `fly.toml` file. Otherwise, you will not be able to deploy.
+- Initialize Fly apps. This will automatically recreate 3 files that we've just removed and also configure everything for Fly as recommended:
 
-  - Initialize Git.
+  > Until Remix complete the process of simplify and modernize deploy flow with Fly, we'll use this setup. Details of rethinking Remix/Indie stack & Fly deploy setup can be find in [Indie stack's issue #252](https://github.com/remix-run/indie-stack/issues/252)
+
+  ```sh
+  fly launch
+  ```
+
+- Give permission to run the `start.sh` script on docker: In Dockerfile, change the `ENTRYPOINT` line to
+
+  ```
+  RUN chmod +x "./start.sh"
+  ENTRYPOINT [ "./start.sh" ]
+  ```
+
+- Deploy our apps to Fly:
+
+  ```sh
+  fly deploy
+  ```
+
+- Initialize Git.
 
   ```sh
   git init
@@ -100,23 +110,9 @@ Prior to your first deployment, you'll need to do a few things:
 
 - Add a `FLY_API_TOKEN` to your GitHub repo. To do this, go to your user settings on Fly and create a new [token](https://web.fly.io/user/personal_access_tokens/new), then add it to [your repo secrets](https://docs.github.com/en/actions/security-guides/encrypted-secrets) with the name `FLY_API_TOKEN`.
 
-- Add a `SESSION_SECRET` to your fly app secrets, to do this you can run the following commands:
-
-  ```sh
-  fly secrets set SESSION_SECRET=$(openssl rand -hex 32) --app one-more-light-fda8
-  fly secrets set SESSION_SECRET=$(openssl rand -hex 32) --app one-more-light-fda8-staging
-  ```
-
-  If you don't have openssl installed, you can also use [1Password](https://1password.com/password-generator) to generate a random secret, just replace `$(openssl rand -hex 32)` with the generated secret.
-
-- Create a persistent volume for the sqlite database for both your staging and production environments. Run the following:
-
-  ```sh
-  fly volumes create data --size 1 --app one-more-light-fda8
-  fly volumes create data --size 1 --app one-more-light-fda8-staging
-  ```
-
 Now that everything is set up you can commit and push your changes to your repo. Every commit to your `main` branch will trigger a deployment to your production environment, and every commit to your `dev` branch will trigger a deployment to your staging environment.
+
+> Fly has a default value `auto_stop_machines = true` and `auto_start_machines = true`, so the apps can take around ~10s to restart. We'll keep it this way for cost-reduction.
 
 ### Connecting to your database
 
