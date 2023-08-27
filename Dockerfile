@@ -57,8 +57,8 @@ VOLUME /data
 RUN echo "#!/bin/sh\nset -x\nsqlite3 \$DATABASE_URL" > /usr/local/bin/database-cli && chmod +x /usr/local/bin/database-cli
 
 # Entrypoint prepares the database.
-RUN chmod +x "/app/docker-entrypoint.js"
-ENTRYPOINT [ "/app/docker-entrypoint.js" ]
+RUN chmod +x "./start.sh"
+ENTRYPOINT [ "./start.sh" ]
 
 # Start the server by default, this can be overwritten at runtime
 EXPOSE 3000
