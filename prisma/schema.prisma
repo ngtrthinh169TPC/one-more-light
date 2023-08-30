@@ -41,6 +41,7 @@ model Note {
 model Blog {
   id    String @id @default(cuid())
   title String
+  type  String
   body  String
 
   createdAt DateTime @default(now())
@@ -48,4 +49,24 @@ model Blog {
 
   user   User   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId String
+
+  TagOnBlog TagOnBlog[]
+}
+
+model Tag {
+  id          String @id @default(cuid())
+  name        String
+  description String
+
+  TagOnBlog TagOnBlog[]
+}
+
+model TagOnBlog {
+  blog   Blog   @relation(fields: [blogId], references: [id])
+  blogId String
+
+  tag   Tag    @relation(fields: [tagId], references: [id])
+  tagId String
+
+  @@id([blogId, tagId])
 }

@@ -2,34 +2,32 @@ import type { User, Blog } from "@prisma/client";
 
 import { prisma } from "~/db.server";
 
-export function getBlog({
-  id,
-}: Pick<Blog, "id"> & {
-  userId: User["id"];
-}) {
+export function getBlog({ title }: Pick<Blog, "title">) {
   return prisma.blog.findFirst({
-    select: { id: true, body: true, title: true },
-    where: { id },
+    select: { id: true, body: true, title: true, createdAt: true, user: true },
+    where: { title },
   });
 }
 
-export function getBlogList() {
+export function getAllBlogs() {
   return prisma.blog.findMany({
-    select: { id: true, title: true },
+    select: { id: true, type: true, title: true, createdAt: true, user: true },
     orderBy: { updatedAt: "desc" },
   });
 }
 
 export function createBlog({
   body,
+  type,
   title,
   userId,
-}: Pick<Blog, "body" | "title"> & {
+}: Pick<Blog, "body" | "type" | "title"> & {
   userId: User["id"];
 }) {
   return prisma.blog.create({
     data: {
       title,
+      type,
       body,
       user: {
         connect: {
