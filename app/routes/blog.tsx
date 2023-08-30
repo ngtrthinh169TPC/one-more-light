@@ -16,12 +16,12 @@ export default function Landing() {
     <div className="relative min-h-screen bg-light-1-background font-primary sm:flex sm:flex-col sm:items-center">
       <Navbar />
 
-      <main className="flex w-full max-w-2xl flex-col gap-4">
+      <main className="mt-12 flex w-[600px] max-w-2xl flex-col gap-6">
         <h1 className="font-secondary text-2xl font-bold">Hello World</h1>
         {data.blogList.map((item) => (
           <article key={item.title}>
             <header>
-              <h3 className="mb-1 mt-6 font-secondary text-xl font-bold text-light-1-primary">
+              <h3 className="mb-1 font-secondary text-xl font-bold text-light-1-primary">
                 <NavLink to={`${item.title}`}>
                   {item.type}: {item.title}
                 </NavLink>
@@ -35,6 +35,7 @@ export default function Landing() {
                 • by <span className="italic">{item.user.email}</span>
               </p>
             </header>
+            {/* TODO: Add some lines of description */}
           </article>
         ))}
       </main>

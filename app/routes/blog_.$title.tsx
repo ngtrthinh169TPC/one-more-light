@@ -18,12 +18,30 @@ export const loader = async ({ params, request }: LoaderArgs) => {
 
 export default function Blog() {
   const data = useLoaderData<typeof loader>();
+  const blog = data.blog;
 
   return (
-    <div className="relative min-h-screen bg-light-1-background font-primary  sm:flex sm:flex-col sm:items-center">
+    <div className="relative min-h-screen bg-light-1-background font-primary sm:flex sm:flex-col sm:items-center">
       <Navbar />
-      <h2>{data.blog.title}</h2>
-      <p>{data.blog.body}</p>
+      <article className="mt-12 w-[600px]">
+        <header>
+          <span className="font-secondary font-bold text-neutral-400">
+            {blog.type}
+          </span>
+          <h1 className="mb-4 font-secondary text-2xl font-bold text-light-1-primary">
+            {blog.title}
+          </h1>
+          <p className="mb-8 text-right text-sm">
+            {new Date(blog.createdAt).toLocaleDateString(undefined, {
+              day: "numeric",
+              month: "short",
+              year: "numeric",
+            })}{" "}
+            • by <span className="italic">{blog.user.email}</span>
+          </p>
+        </header>
+        <p>{blog.body}</p>
+      </article>
     </div>
   );
 }

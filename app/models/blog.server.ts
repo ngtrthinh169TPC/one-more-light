@@ -4,7 +4,14 @@ import { prisma } from "~/db.server";
 
 export function getBlog({ title }: Pick<Blog, "title">) {
   return prisma.blog.findFirst({
-    select: { id: true, body: true, title: true, createdAt: true, user: true },
+    select: {
+      id: true,
+      type: true,
+      body: true,
+      title: true,
+      createdAt: true,
+      user: true,
+    },
     where: { title },
   });
 }

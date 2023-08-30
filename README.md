@@ -179,7 +179,7 @@ ease-out duration-200
 
 # TODO List
 
-- Page rework: Blog detail
+- Feature: use ids for blogs instead of titles
 - Feature: Blog edit/delete
 - Reactivate deploy workflow
 - Feature: View counts for blogs
