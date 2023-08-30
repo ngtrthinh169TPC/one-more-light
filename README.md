@@ -181,6 +181,7 @@ ease-out duration-200
 
 - Page rework: Blog detail
 - Feature: Blog edit/delete
+- Reactivate deploy workflow
 - Feature: View counts for blogs
 - Feature: Permissions (admin, user, guest)
 - Chore: Remove notes
@@ -193,7 +194,8 @@ ease-out duration-200
 - Feature: Dark mode (dark/light/system)
 - Feature: Responsive UI (3 breakpoints)
 - New page: Reports and suggestions
-- Feature: Image hosting for Blog
 - New page: Showcase
 - New page: Landing page
+- Testing (cypress, vitest)
+- Feature: Image hosting for Blog
 - Feature: Mail collector - Subscription (Mailgun?)
