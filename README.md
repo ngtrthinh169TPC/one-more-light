@@ -176,3 +176,24 @@ We use [Prettier](https://prettier.io/) for auto-formatting in this project. It'
 ```
 ease-out duration-200
 ```
+
+# TODO List
+
+- Page rework: Blog detail
+- Feature: Blog edit/delete
+- Feature: View counts for blogs
+- Feature: Permissions (admin, user, guest)
+- Chore: Remove notes
+- New page: All Links
+- New page: Portfolio
+- Feature: Embed Rick Astley to unauthorized access
+- Feature: Blog Pagination
+- Feature: Blog filter/sort
+- Feature: Footer with contact
+- Feature: Dark mode (dark/light/system)
+- Feature: Responsive UI (3 breakpoints)
+- New page: Reports and suggestions
+- Feature: Image hosting for Blog
+- New page: Showcase
+- New page: Landing page
+- Feature: Mail collector - Subscription (Mailgun?)
