@@ -54,7 +54,7 @@ export default function Blog() {
   const errorMessage: string = actionData?.errors.toString() || "";
 
   return (
-    <div className="bg-light-1-background font-primary relative min-h-screen  sm:flex sm:flex-col sm:items-center">
+    <div className="relative min-h-screen bg-light-1-background font-primary  sm:flex sm:flex-col sm:items-center">
       <Navbar />
       new blog
       <Form method="post" className="flex w-[600px] flex-col gap-4 bg-blue-100">

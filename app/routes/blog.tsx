@@ -13,7 +13,7 @@ export const loader = async () => {
 export default function Landing() {
   const data = useLoaderData<typeof loader>();
   return (
-    <div className="bg-light-1-background font-primary relative min-h-screen  sm:flex sm:flex-col sm:items-center">
+    <div className="relative min-h-screen bg-light-1-background font-primary sm:flex sm:flex-col sm:items-center">
       <Navbar />
 
       <main className="flex w-full max-w-2xl flex-col gap-4">
@@ -21,7 +21,7 @@ export default function Landing() {
         {data.blogList.map((item) => (
           <article key={item.title}>
             <header>
-              <h3 className="font-secondary text-light-1-primary mb-1 mt-6 text-xl font-bold">
+              <h3 className="mb-1 mt-6 font-secondary text-xl font-bold text-light-1-primary">
                 <NavLink to={`${item.title}`}>
                   {item.type}: {item.title}
                 </NavLink>

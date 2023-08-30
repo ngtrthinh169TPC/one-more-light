@@ -20,7 +20,7 @@ export default function Blog() {
   const data = useLoaderData<typeof loader>();
 
   return (
-    <div className="bg-light-1-background font-primary relative min-h-screen  sm:flex sm:flex-col sm:items-center">
+    <div className="relative min-h-screen bg-light-1-background font-primary  sm:flex sm:flex-col sm:items-center">
       <Navbar />
       <h2>{data.blog.title}</h2>
       <p>{data.blog.body}</p>
