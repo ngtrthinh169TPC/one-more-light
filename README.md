@@ -171,23 +171,40 @@ We use [Prettier](https://prettier.io/) for auto-formatting in this project. It'
 
 # Styling Guideline
 
-## Basic Components
+## Animation
 
-### Button Hover Animation
+### Duration
 
-```
-ease-out duration-200
-```
-
-### Input accessibility
+- For short animation (small UI components):
 
 ```
-focus-visible:outline-primary-light-1
+duration-200
+```
+
+### Transition
+
+- Recommended (almost all the cases):
+
+```
+ease-out
+```
+
+## Accessibility
+
+- For keyboard-interaction input:
+
+```
+focus-visible:outline-[choose-your-color]
+```
+
+- For anything else (mouse/touchscreen):
+
+```
+focus:outline-[choose-your-color]
 ```
 
 # TODO List
 
-- Feature: outline for input components
 - Feature: error handling for inputs
 - Rework: New blog page
 - Feature: use ids for blogs instead of titles
