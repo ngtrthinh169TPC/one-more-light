@@ -206,7 +206,6 @@ focus:outline-[choose-your-color]
 # TODO List
 
 - Feature: error handling for inputs
-- Rework: New blog page
 - Feature: use ids for blogs instead of titles
 - Feature: Blog edit/delete
 - Reactivate deploy workflow

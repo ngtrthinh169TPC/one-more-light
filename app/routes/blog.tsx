@@ -16,7 +16,7 @@ export default function Landing() {
     <div className="relative min-h-screen bg-light-1-background font-primary sm:flex sm:flex-col sm:items-center">
       <Navbar />
 
-      <main className="mt-12 flex w-[600px] max-w-2xl flex-col gap-6">
+      <main className="mt-12 flex w-[600px] max-w-2xl flex-col gap-12">
         <h1 className="font-secondary text-2xl font-bold">Hello World</h1>
         {data.blogList.map((item) => (
           <article key={item.title}>
@@ -35,7 +35,9 @@ export default function Landing() {
                 • by <span className="italic">{item.user.email}</span>
               </p>
             </header>
-            <p className="mt-3 line-clamp-3">{item.body}</p>
+            <p className="mt-3 line-clamp-3 overflow-hidden text-ellipsis whitespace-pre-line">
+              {item.body}
+            </p>
             {/* TODO: Add some lines of description */}
           </article>
         ))}

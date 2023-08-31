@@ -28,10 +28,10 @@ export default function Blog() {
           <span className="font-secondary font-bold text-neutral-400">
             {blog.type}
           </span>
-          <h1 className="mb-4 font-secondary text-2xl font-bold text-light-1-primary">
+          <h1 className="mb-3 font-secondary text-2xl font-bold text-light-1-primary">
             {blog.title}
           </h1>
-          <p className="mb-8 text-right text-sm">
+          <p className="mb-6 text-right text-sm">
             {new Date(blog.createdAt).toLocaleDateString(undefined, {
               day: "numeric",
               month: "short",
@@ -40,7 +40,9 @@ export default function Blog() {
             • by <span className="italic">{blog.user.email}</span>
           </p>
         </header>
-        <p>{blog.body}</p>
+        <p className="overflow-hidden text-ellipsis whitespace-pre-line">
+          {blog.body}
+        </p>
       </article>
     </div>
   );
