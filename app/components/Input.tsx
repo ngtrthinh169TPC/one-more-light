@@ -19,7 +19,7 @@ export function Input({ name, error }: InputProps) {
         <input
           // ref={titleRef}
           name={name}
-          className="flex-1 rounded-md border-2 border-neutral-300 px-3 text-lg leading-loose focus-visible:outline-light-1-primary"
+          className="rounded-md border-2 border-neutral-300 px-3 py-1 focus-visible:outline-light-1-primary"
           // aria-invalid={actionData?.errors?.title ? true : undefined}
           // aria-errormessage={
           //   actionData?.errors?.title ? "title-error" : undefined
@@ -44,7 +44,7 @@ export function TextArea({ name, error }: InputProps) {
           // ref={titleRef}
           name={name}
           rows={8}
-          className="flex-1 rounded-md border-2 border-neutral-300 px-3 text-lg leading-loose focus-visible:outline-light-1-primary"
+          className="rounded-md border-2 border-neutral-300 px-3 py-1 focus-visible:outline-light-1-primary"
           // aria-invalid={actionData?.errors?.title ? true : undefined}
           // aria-errormessage={
           //   actionData?.errors?.title ? "title-error" : undefined
@@ -65,7 +65,10 @@ export function Select({ name, error, options }: SelectProps) {
     <div>
       <label className="flex w-full flex-col gap-1">
         <span>{capitalize(name)}: </span>
-        <select name={name} className="rounded-md border-2 border-neutral-300">
+        <select
+          name={name}
+          className="rounded-md border-2 border-neutral-300 px-2 py-1 focus-visible:outline-light-1-primary"
+        >
           {options.map((option) => (
             <option key={`select-option-${name}-${option}`} value={option}>
               {option}
