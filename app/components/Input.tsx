@@ -1,4 +1,4 @@
-import { camelCase } from "lodash";
+import { capitalize } from "lodash";
 
 type InputProps = {
   name: string;
@@ -12,16 +12,14 @@ interface SelectProps extends InputProps {
 // TODO: styling with consistency
 
 export function Input({ name, error }: InputProps) {
-  console.log(camelCase(name));
-
   return (
     <div>
       <label className="flex w-full flex-col gap-1">
-        <span>{camelCase(name)}: </span>
+        <span>{capitalize(name)}: </span>
         <input
           // ref={titleRef}
           name={name}
-          className="flex-1 rounded-md border-2 border-neutral-300 px-3 text-lg leading-loose"
+          className="flex-1 rounded-md border-2 border-neutral-300 px-3 text-lg leading-loose focus-visible:outline-light-1-primary"
           // aria-invalid={actionData?.errors?.title ? true : undefined}
           // aria-errormessage={
           //   actionData?.errors?.title ? "title-error" : undefined
@@ -41,12 +39,12 @@ export function TextArea({ name, error }: InputProps) {
   return (
     <div>
       <label className="flex w-full flex-col gap-1">
-        <span>{camelCase(name)}: </span>
+        <span>{capitalize(name)}: </span>
         <textarea
           // ref={titleRef}
           name={name}
           rows={8}
-          className="flex-1 rounded-md border-2 border-neutral-300 px-3 text-lg leading-loose"
+          className="flex-1 rounded-md border-2 border-neutral-300 px-3 text-lg leading-loose focus-visible:outline-light-1-primary"
           // aria-invalid={actionData?.errors?.title ? true : undefined}
           // aria-errormessage={
           //   actionData?.errors?.title ? "title-error" : undefined
@@ -65,9 +63,9 @@ export function TextArea({ name, error }: InputProps) {
 export function Select({ name, error, options }: SelectProps) {
   return (
     <div>
-      <label className="flex w-full appearance-none flex-col gap-1">
-        <span>{camelCase(name)}: </span>
-        <select name={name}>
+      <label className="flex w-full flex-col gap-1">
+        <span>{capitalize(name)}: </span>
+        <select name={name} className="rounded-md border-2 border-neutral-300">
           {options.map((option) => (
             <option key={`select-option-${name}-${option}`} value={option}>
               {option}

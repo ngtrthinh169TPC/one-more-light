@@ -56,8 +56,7 @@ export default function Blog() {
   return (
     <div className="relative min-h-screen bg-light-1-background font-primary sm:flex sm:flex-col sm:items-center">
       <Navbar />
-      new blog
-      <Form method="post" className="flex w-[600px] flex-col gap-4 bg-blue-100">
+      <Form method="post" className="flex w-[600px] flex-col gap-4">
         <Input name="title" />
         <TextArea name="body" />
         <Select name="type" options={blogTypeConst} />
