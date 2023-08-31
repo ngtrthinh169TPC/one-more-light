@@ -21,7 +21,7 @@ export default function Landing() {
         {data.blogList.map((item) => (
           <article key={item.title}>
             <header>
-              <h3 className="mb-1 font-secondary text-xl font-bold text-light-1-primary">
+              <h3 className="font-secondary text-xl font-bold text-light-1-primary">
                 <NavLink to={`${item.title}`}>
                   {item.type}: {item.title}
                 </NavLink>
@@ -35,6 +35,7 @@ export default function Landing() {
                 • by <span className="italic">{item.user.email}</span>
               </p>
             </header>
+            <p className="mt-3 line-clamp-3">{item.body}</p>
             {/* TODO: Add some lines of description */}
           </article>
         ))}

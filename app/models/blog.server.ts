@@ -18,7 +18,14 @@ export function getBlog({ title }: Pick<Blog, "title">) {
 
 export function getAllBlogs() {
   return prisma.blog.findMany({
-    select: { id: true, type: true, title: true, createdAt: true, user: true },
+    select: {
+      id: true,
+      type: true,
+      body: true,
+      title: true,
+      createdAt: true,
+      user: true,
+    },
     orderBy: { updatedAt: "desc" },
   });
 }

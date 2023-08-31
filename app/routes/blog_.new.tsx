@@ -57,12 +57,13 @@ export default function Blog() {
     <div className="relative min-h-screen bg-light-1-background font-primary sm:flex sm:flex-col sm:items-center">
       <Navbar />
       <Form method="post" className="mt-12 flex w-[600px] flex-col gap-4">
+        <h1 className="font-secondary text-2xl">Your new blog</h1>
         <Input name="title" />
         <TextArea name="body" />
         <Select name="type" options={blogTypeConst} />
         <button
           type="submit"
-          className="mt-8 w-fit rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:bg-blue-400"
+          className="mt-4 w-fit rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-600 focus:bg-blue-400"
         >
           {"Post your blog -->"}
         </button>

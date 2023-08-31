@@ -17,7 +17,7 @@ const navigationList = [
 
 export default function Navbar() {
   return (
-    <div className="flex">
+    <div className="flex w-full justify-end bg-neutral-200 font-bold text-light-1-primary">
       {navigationList.map((item) => (
         <NavLink
           to={item.endpoint}
