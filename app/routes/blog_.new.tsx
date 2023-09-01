@@ -45,7 +45,7 @@ export const action = async ({ request }: ActionArgs) => {
     userId,
   });
 
-  return redirect(`/`);
+  return redirect(`..`);
 };
 
 export default function NewBlog() {
