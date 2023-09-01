@@ -48,7 +48,7 @@ export const action = async ({ request }: ActionArgs) => {
   return redirect(`/`);
 };
 
-export default function Blog() {
+export default function NewBlog() {
   const actionData = useActionData<typeof action>();
 
   const errorMessage: string = actionData?.errors.toString() || "";

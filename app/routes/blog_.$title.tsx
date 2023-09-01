@@ -16,7 +16,7 @@ export const loader = async ({ params, request }: LoaderArgs) => {
   return json({ blog });
 };
 
-export default function Blog() {
+export default function BlogDetail() {
   const data = useLoaderData<typeof loader>();
   const blog = data.blog;
 

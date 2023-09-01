@@ -10,7 +10,7 @@ export const loader = async () => {
   return json({ blogList });
 };
 
-export default function Landing() {
+export default function BlogList() {
   const data = useLoaderData<typeof loader>();
   return (
     <div className="relative min-h-screen bg-light-1-background font-primary sm:flex sm:flex-col sm:items-center">
