@@ -19,10 +19,10 @@ export default function BlogList() {
       <main className="mt-12 flex w-[600px] max-w-2xl flex-col gap-12">
         <h1 className="font-secondary text-2xl font-bold">Hello World</h1>
         {data.blogList.map((item) => (
-          <article key={item.title}>
+          <article key={`blog-${item.id}`}>
             <header>
               <h3 className="font-secondary text-xl font-bold text-light-1-primary">
-                <NavLink to={`${item.title}`}>
+                <NavLink to={`${item.id}`}>
                   {item.type}: {item.title}
                 </NavLink>
               </h3>

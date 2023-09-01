@@ -228,3 +228,19 @@ focus:outline-[choose-your-color]
 - Testing (cypress, vitest)
 - Feature: Image hosting for Blog
 - Feature: Mail collector - Subscription (Mailgun?)
+
+# Coding Guideline
+
+## Conventions
+
+### Key for React Elements
+
+```
+`${componentName}-${itemId}`
+```
+
+For example, a Blog object in url `blog` will be rendered with the key:
+
+```
+`blog-${blog.id}`
+```
