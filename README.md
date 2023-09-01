@@ -242,3 +242,24 @@ For example, a Blog object in url `blog` will be rendered with the key:
 ```
 `blog-${blog.id}`
 ```
+
+## Quality Assurance
+
+### User flows
+
+#### Guest
+
+- Sign up (join)
+- Sign in
+- See all blogs
+- Read a blog
+
+#### User
+
+- **All Guest's flows**
+- Sign out
+
+#### Me
+
+- **All User's flows**
+- Post a blog
