@@ -2,7 +2,7 @@ import type { User, Blog } from "@prisma/client";
 
 import { prisma } from "~/db.server";
 
-export function getBlog({ title }: Pick<Blog, "title">) {
+export function getBlog({ id }: Pick<Blog, "id">) {
   return prisma.blog.findFirst({
     select: {
       id: true,
@@ -12,7 +12,7 @@ export function getBlog({ title }: Pick<Blog, "title">) {
       createdAt: true,
       user: true,
     },
-    where: { title },
+    where: { id },
   });
 }
 

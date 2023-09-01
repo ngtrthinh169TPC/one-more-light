@@ -7,9 +7,9 @@ import { getBlog } from "~/models/blog.server";
 
 export const loader = async ({ params, request }: LoaderArgs) => {
   // const userId = await requireUserId(request);
-  invariant(params.title, "Blog with this title is not found");
+  invariant(params.id, "Blog with this title is not found");
 
-  const blog = await getBlog({ title: params.title });
+  const blog = await getBlog({ id: params.id });
   if (!blog) {
     throw new Response("Not Found", { status: 404 });
   }

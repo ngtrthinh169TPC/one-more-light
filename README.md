@@ -206,9 +206,7 @@ focus:outline-[choose-your-color]
 # TODO List
 
 - Feature: error handling for inputs
-- Feature: use ids for blogs instead of titles
 - Feature: Blog edit/delete
-- Reactivate deploy workflow
 - Feature: Tag system for Blogs
 - Feature: View counts for blogs
 - Restructure design system & tailwind config
