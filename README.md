@@ -205,10 +205,11 @@ focus:outline-[choose-your-color]
 
 # TODO List
 
+- Feature: Typescript setup(s) for svg files
+- Feature: Blog edit
 - Feature: error handling for inputs
-- Feature: Blog edit/delete
-- Feature: Tag system for Blogs
 - Feature: View counts for blogs
+- Feature: Tag system for Blogs
 - Restructure design system & tailwind config
 - Feature: Permissions (admin, user, guest)
 - Chore: Remove notes
@@ -222,7 +223,7 @@ focus:outline-[choose-your-color]
 - Feature: Responsive UI (3 breakpoints)
 - New page: Reports and suggestions
 - New page: Showcase
-- New page: Landing page
+- New page: Landing page (replacement for current root page)
 - Testing (cypress, vitest)
 - Feature: Image hosting for Blog
 - Feature: Mail collector - Subscription (Mailgun?)

@@ -52,11 +52,8 @@ export function createBlog({
   });
 }
 
-export function deleteBlog({
-  id,
-  userId,
-}: Pick<Blog, "id"> & { userId: User["id"] }) {
+export function deleteBlog({ id }: Pick<Blog, "id">) {
   return prisma.blog.deleteMany({
-    where: { id, userId },
+    where: { id },
   });
 }
