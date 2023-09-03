@@ -27,25 +27,14 @@ export const action = async ({ request }: ActionArgs) => {
     return json({ errors: { type: "Type is required" } }, { status: 400 });
   }
 
-  // TODO: revert this to redirect after complete the blog pages
-  // const blog = await createBlog({
-  //   title,
-  //   brief,
-  //   body,
-  //   type,
-  //   userId,
-  // });
-
-  // return redirect(`/blog/${blog.id}`);
-
-  await createBlog({
+  const blog = await createBlog({
     title,
     body,
     type,
     userId,
   });
 
-  return redirect(`..`);
+  return redirect(`/blog/${blog.id}`);
 };
 
 export default function NewBlog() {

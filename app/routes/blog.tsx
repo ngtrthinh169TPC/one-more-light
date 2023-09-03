@@ -43,7 +43,6 @@ export default function BlogList() {
                 __html: DOMPurify.sanitize(marked(item.body)),
               }}
             />
-            {/* TODO: Add some lines of description */}
           </article>
         ))}
       </main>
