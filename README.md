@@ -224,6 +224,7 @@ focus:outline-[choose-your-color]
 - New page: Reports and suggestions
 - New page: Showcase
 - New page: Landing page (replacement for current root page)
+- Feature: Change favicon, metadata & try SEO optimizing
 - Testing (cypress, vitest)
 - Feature: Image hosting for Blog
 - Feature: Mail collector - Subscription (Mailgun?)
