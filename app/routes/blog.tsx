@@ -1,5 +1,7 @@
 import { json } from "@remix-run/node";
 import { NavLink, useLoaderData } from "@remix-run/react";
+import DOMPurify from "isomorphic-dompurify";
+import { marked } from "marked";
 import Navbar from "~/components/Navbar";
 import { getAllBlogs } from "~/models/blog.server";
 // import { requireUserId } from "~/session.server";
@@ -35,9 +37,12 @@ export default function BlogList() {
                 • by <span className="italic">{item.user.email}</span>
               </p>
             </header>
-            <p className="mt-3 line-clamp-3 overflow-hidden text-ellipsis whitespace-pre-line">
-              {item.body}
-            </p>
+            <p
+              className="mt-3 line-clamp-3 overflow-hidden text-ellipsis whitespace-pre-line"
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(marked(item.body)),
+              }}
+            ></p>
             {/* TODO: Add some lines of description */}
           </article>
         ))}

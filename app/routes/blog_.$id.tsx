@@ -1,6 +1,8 @@
 import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import { Form, useLoaderData } from "@remix-run/react";
+import DOMPurify from "isomorphic-dompurify";
+import { marked } from "marked";
 import invariant from "tiny-invariant";
 import Navbar from "~/components/Navbar";
 import { deleteBlog, getBlog } from "~/models/blog.server";
@@ -13,6 +15,7 @@ export const loader = async ({ params, request }: LoaderArgs) => {
   if (!blog) {
     throw new Response("Not Found", { status: 404 });
   }
+
   return json({ blog });
 };
 
@@ -26,8 +29,7 @@ export const action = async ({ params, request }: ActionArgs) => {
 };
 
 export default function BlogDetail() {
-  const data = useLoaderData<typeof loader>();
-  const blog = data.blog;
+  const { blog } = useLoaderData<typeof loader>();
 
   return (
     <div className="relative min-h-screen bg-light-1-background font-primary sm:flex sm:flex-col sm:items-center">
@@ -55,9 +57,12 @@ export default function BlogDetail() {
             </Form>
           </div>
         </header>
-        <p className="overflow-hidden text-ellipsis whitespace-pre-line">
-          {blog.body}
-        </p>
+        <p
+          className="overflow-hidden text-ellipsis whitespace-pre-line"
+          dangerouslySetInnerHTML={{
+            __html: DOMPurify.sanitize(marked(blog.body)),
+          }}
+        ></p>
       </article>
     </div>
   );
