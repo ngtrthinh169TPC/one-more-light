@@ -206,7 +206,7 @@ focus:outline-[choose-your-color]
 # TODO List
 
 - Feature: Typescript setup(s) for svg files
-- Feature: Blog edit
+- Feature: Blog edit (with preview for markdown)
 - Feature: error handling for inputs
 - Feature: View counts for blogs
 - Feature: Tag system for Blogs
