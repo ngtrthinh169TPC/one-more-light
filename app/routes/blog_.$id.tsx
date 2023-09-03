@@ -57,12 +57,12 @@ export default function BlogDetail() {
             </Form>
           </div>
         </header>
-        <p
+        <div
           className="overflow-hidden text-ellipsis whitespace-pre-line"
           dangerouslySetInnerHTML={{
             __html: DOMPurify.sanitize(marked(blog.body)),
           }}
-        ></p>
+        />
       </article>
     </div>
   );

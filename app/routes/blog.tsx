@@ -37,12 +37,12 @@ export default function BlogList() {
                 • by <span className="italic">{item.user.email}</span>
               </p>
             </header>
-            <p
+            <div
               className="mt-3 line-clamp-3 overflow-hidden text-ellipsis whitespace-pre-line"
               dangerouslySetInnerHTML={{
                 __html: DOMPurify.sanitize(marked(item.body)),
               }}
-            ></p>
+            />
             {/* TODO: Add some lines of description */}
           </article>
         ))}
