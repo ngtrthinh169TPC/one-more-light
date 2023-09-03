@@ -5,6 +5,8 @@ import DOMPurify from "isomorphic-dompurify";
 import { marked } from "marked";
 import invariant from "tiny-invariant";
 import Navbar from "~/components/Navbar";
+import SvgDelete from "~/components/svgs/Delete";
+import SvgEditNote from "~/components/svgs/EditNote";
 import { deleteBlog, getBlog } from "~/models/blog.server";
 
 export const loader = async ({ params, request }: LoaderArgs) => {
@@ -50,10 +52,14 @@ export default function BlogDetail() {
             })}{" "}
             • by <span className="italic">{blog.user.email}</span>
           </p>
-          <div className="absolute right-0 top-0 flex gap-2 ">
-            {/* <button>Edit</button> */}
+          <div className="absolute right-0 top-0 flex gap-2 items-start">
+            <button>
+              <SvgEditNote className="hover:fill-light-1-primary" />
+            </button>
             <Form method="post">
-              <button type="submit">Delete</button>
+              <button type="submit">
+                <SvgDelete className="hover:fill-light-1-primary" />
+              </button>
             </Form>
           </div>
         </header>

@@ -17,7 +17,7 @@
     "test:e2e:run": "cross-env PORT=8811 start-server-and-test start:mocks http://localhost:8811 \"npx cypress run\"",
     "typecheck": "tsc && tsc -p cypress",
     "validate": "run-p \"test -- --run\" lint typecheck test:e2e:run",
-    "svg": "npx @svgr/cli --ignore-existing --out-dir app/components/svgs -- public/svgs"
+    "svg": "npx @svgr/cli --ignore-existing --typescript --jsx-runtime automatic --out-dir app/components/svgs -- public/svgs"
   },
   "eslintIgnore": [
     "/node_modules",
