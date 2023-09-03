@@ -10,6 +10,7 @@ module.exports = {
     v2_routeConvention: true,
   },
   ignoredRouteFiles: ["**/.*", "**/*.test.{js,jsx,ts,tsx}"],
+  serverDependenciesToBundle: ["marked"],
   postcss: true,
   serverModuleFormat: "cjs",
   tailwind: true,
