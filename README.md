@@ -169,6 +169,18 @@ This project uses ESLint for linting. That is configured in `.eslintrc.js`.
 
 We use [Prettier](https://prettier.io/) for auto-formatting in this project. It's recommended to install an editor plugin (like the [VSCode Prettier plugin](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)) to get auto-formatting on save. There's also a `npm run format` script you can run to format all files in the project.
 
+## Import svg
+
+This project uses [React-SVGR](https://react-svgr.com/) to transform SVG Elements into React Elements, since React Elements are easier to use and type-safe.
+
+Our conventions recommend adding SVG files to `public/svgs` and run
+
+```sh
+npm run svg
+```
+
+React components will be automatically created at `app/components/svgs`. There's a setup in [SVGR's docs for Remix](https://react-svgr.com/docs/remix/) but we decided not to use it since it requires using a Prettier plugin, which can possibly conflict with other Prettier plugins.
+
 # Styling Guideline
 
 ## Animation
@@ -208,6 +220,8 @@ focus:outline-[choose-your-color]
 - Feature: Typescript setup(s) for svg files
 - Feature: Blog edit (with preview for markdown)
 - Feature: error handling for inputs
+- Feature: confirm modal on delete blog
+- Feature: username for accounts
 - Feature: View counts for blogs
 - Feature: Tag system for Blogs
 - Restructure design system & tailwind config

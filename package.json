@@ -16,12 +16,8 @@
     "pretest:e2e:run": "npm run build",
     "test:e2e:run": "cross-env PORT=8811 start-server-and-test start:mocks http://localhost:8811 \"npx cypress run\"",
     "typecheck": "tsc && tsc -p cypress",
-    "validate": "run-p \"test -- --run\" lint typecheck test:e2e:run"
-  },
-  "prettier": {
-    "plugins": [
-      "prettier-plugin-tailwindcss"
-    ]
+    "validate": "run-p \"test -- --run\" lint typecheck test:e2e:run",
+    "svg": "npx @svgr/cli --ignore-existing --out-dir app/components/svgs -- public/svgs"
   },
   "eslintIgnore": [
     "/node_modules",
@@ -74,7 +70,6 @@
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.28",
     "prettier": "3.0.2",
-    "prettier-plugin-tailwindcss": "^0.5.3",
     "prisma": "^4.16.2",
     "start-server-and-test": "^2.0.0",
     "tailwindcss": "^3.3.3",
