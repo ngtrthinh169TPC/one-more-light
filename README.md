@@ -217,7 +217,6 @@ focus:outline-[choose-your-color]
 
 # TODO List
 
-- Feature: Typescript setup(s) for svg files
 - Feature: Blog edit (with preview for markdown)
 - Feature: error handling for inputs
 - Feature: confirm modal on delete blog
