@@ -57,3 +57,11 @@ export function deleteBlog({ id }: Pick<Blog, "id">) {
     where: { id },
   });
 }
+
+export function editBlog({
+  id,
+  title,
+  body,
+}: Pick<Blog, "id" | "title" | "body">) {
+  return prisma.blog.update({ where: { id }, data: { title, body } });
+}

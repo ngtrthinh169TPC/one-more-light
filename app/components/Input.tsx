@@ -2,6 +2,7 @@ import { capitalize } from "lodash";
 
 type InputProps = {
   name: string;
+  defaultValue?: string;
   error?: string | null;
 };
 
@@ -11,7 +12,7 @@ interface SelectProps extends InputProps {
 
 // TODO: styling with consistency
 
-export function Input({ name, error }: InputProps) {
+export function Input({ name, defaultValue, error }: InputProps) {
   return (
     <div>
       <label className="flex w-full flex-col gap-1">
@@ -19,6 +20,7 @@ export function Input({ name, error }: InputProps) {
         <input
           // ref={titleRef}
           name={name}
+          defaultValue={defaultValue}
           className="rounded-md border-2 border-neutral-300 px-3 py-1 focus-visible:outline-light-1-primary"
           // aria-invalid={actionData?.errors?.title ? true : undefined}
           // aria-errormessage={
@@ -35,7 +37,7 @@ export function Input({ name, error }: InputProps) {
   );
 }
 
-export function TextArea({ name, error }: InputProps) {
+export function TextArea({ name, defaultValue, error }: InputProps) {
   return (
     <div>
       <label className="flex w-full flex-col gap-1">
@@ -43,6 +45,7 @@ export function TextArea({ name, error }: InputProps) {
         <textarea
           // ref={titleRef}
           name={name}
+          defaultValue={defaultValue}
           rows={8}
           className="rounded-md border-2 border-neutral-300 px-3 py-1 focus-visible:outline-light-1-primary"
           // aria-invalid={actionData?.errors?.title ? true : undefined}

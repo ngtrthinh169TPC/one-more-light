@@ -217,7 +217,7 @@ focus:outline-[choose-your-color]
 
 # TODO List
 
-- Feature: Blog edit (with preview for markdown)
+- Feature: Preview for markdowns
 - Feature: error handling for inputs
 - Feature: confirm modal on delete blog
 - Feature: username for accounts

@@ -1,6 +1,6 @@
 import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
-import { Form, useLoaderData } from "@remix-run/react";
+import { Form, NavLink, useLoaderData } from "@remix-run/react";
 import DOMPurify from "isomorphic-dompurify";
 import { marked } from "marked";
 import invariant from "tiny-invariant";
@@ -52,9 +52,11 @@ export default function BlogDetail() {
             })}{" "}
             • by <span className="italic">{blog.user.email}</span>
           </p>
-          <div className="absolute right-0 top-0 flex gap-2 items-start">
+          <div className="absolute right-0 top-0 flex items-start gap-2">
             <button>
-              <SvgEditNote className="hover:fill-light-1-primary" />
+              <NavLink to="edit">
+                <SvgEditNote className="hover:fill-light-1-primary" />
+              </NavLink>
             </button>
             <Form method="post">
               <button type="submit">
