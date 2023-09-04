@@ -28,7 +28,7 @@ export default function BlogList() {
                   {item.type}: {item.title}
                 </NavLink>
               </h3>
-              <p className="text-sm">
+              <p className="text-sm" suppressHydrationWarning>
                 {new Date(item.createdAt).toLocaleDateString(undefined, {
                   day: "numeric",
                   month: "short",
