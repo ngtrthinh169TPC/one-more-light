@@ -221,6 +221,7 @@ focus:outline-[choose-your-color]
 - Feature: error handling for inputs
 - Feature: confirm modal on delete blog
 - Feature: username for accounts
+- Remake: Join & Login pages
 - Feature: Tag system for Blogs
 - Restructure design system & tailwind config
 - Feature: Permissions (admin, user, guest)
@@ -228,6 +229,7 @@ focus:outline-[choose-your-color]
 - New page: All Links
 - New page: Portfolio
 - Feature: Embed Rick Astley to unauthorized access
+- Feature: Meta for every pages
 - Feature: Blog Pagination
 - Feature: Blog filter/sort
 - Feature: Footer with contact
