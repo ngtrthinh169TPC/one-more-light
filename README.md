@@ -221,7 +221,6 @@ focus:outline-[choose-your-color]
 - Feature: error handling for inputs
 - Feature: confirm modal on delete blog
 - Feature: username for accounts
-- Feature: View counts for blogs
 - Feature: Tag system for Blogs
 - Restructure design system & tailwind config
 - Feature: Permissions (admin, user, guest)

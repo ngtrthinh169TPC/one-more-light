@@ -3,12 +3,14 @@ import type { User, Blog } from "@prisma/client";
 import { prisma } from "~/db.server";
 
 export function getBlog({ id }: Pick<Blog, "id">) {
-  return prisma.blog.findFirst({
+  return prisma.blog.update({
+    data: { viewCount: { increment: 1 } },
     select: {
       id: true,
       type: true,
       body: true,
       title: true,
+      viewCount: true,
       createdAt: true,
       user: true,
     },

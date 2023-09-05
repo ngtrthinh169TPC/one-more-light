@@ -71,6 +71,9 @@ export default function BlogDetail() {
             __html: DOMPurify.sanitize(marked(blog.body)),
           }}
         />
+        <p className="mt-12 text-sm italic">
+          Visited {blog.viewCount} time{blog.viewCount !== 1 ? "s" : ""}
+        </p>
       </article>
     </div>
   );

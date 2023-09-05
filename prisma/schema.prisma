@@ -45,6 +45,8 @@ model Blog {
   type  String
   body  String
 
+  viewCount Int @default(0)
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
