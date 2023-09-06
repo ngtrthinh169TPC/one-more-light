@@ -2,6 +2,7 @@ import type { ActionArgs, LoaderArgs, V2_MetaFunction } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import { Form, Link, useActionData, useSearchParams } from "@remix-run/react";
 import { useEffect, useRef } from "react";
+import { Input } from "~/components/Input";
 
 import { verifyLogin } from "~/models/user.server";
 import { createUserSession, getUserId } from "~/session.server";
@@ -80,57 +81,41 @@ export default function LoginPage() {
       <div className="mx-auto w-full max-w-md px-8">
         <Form method="post" className="space-y-6">
           <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Email address
-            </label>
-            <div className="mt-1">
-              <input
-                ref={emailRef}
-                id="email"
-                required
-                autoFocus={true}
-                name="email"
-                type="email"
-                autoComplete="email"
-                aria-invalid={actionData?.errors?.email ? true : undefined}
-                aria-describedby="email-error"
-                className="w-full rounded border border-gray-500 px-2 py-1 text-lg"
-              />
-              {actionData?.errors?.email ? (
-                <div className="pt-1 text-red-700" id="email-error">
-                  {actionData.errors.email}
-                </div>
-              ) : null}
-            </div>
+            <Input
+              label="Email address"
+              ref={emailRef}
+              id="email"
+              required
+              autoFocus
+              name="email"
+              type="email"
+              autoComplete="email"
+              aria-invalid={actionData?.errors?.email ? true : undefined}
+              aria-describedby="email-error"
+            />
+            {actionData?.errors?.email ? (
+              <div className="pt-1 text-red-700" id="email-error">
+                {actionData.errors.email}
+              </div>
+            ) : null}
           </div>
 
           <div>
-            <label
-              htmlFor="password"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Password
-            </label>
-            <div className="mt-1">
-              <input
-                id="password"
-                ref={passwordRef}
-                name="password"
-                type="password"
-                autoComplete="current-password"
-                aria-invalid={actionData?.errors?.password ? true : undefined}
-                aria-describedby="password-error"
-                className="w-full rounded border border-gray-500 px-2 py-1 text-lg"
-              />
-              {actionData?.errors?.password ? (
-                <div className="pt-1 text-red-700" id="password-error">
-                  {actionData.errors.password}
-                </div>
-              ) : null}
-            </div>
+            <Input
+              label="Password"
+              id="password"
+              ref={passwordRef}
+              name="password"
+              type="password"
+              autoComplete="current-password"
+              aria-invalid={actionData?.errors?.password ? true : undefined}
+              aria-describedby="password-error"
+            />
+            {actionData?.errors?.password ? (
+              <div className="pt-1 text-red-700" id="password-error">
+                {actionData.errors.password}
+              </div>
+            ) : null}
           </div>
 
           <input type="hidden" name="redirectTo" value={redirectTo} />

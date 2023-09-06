@@ -54,8 +54,20 @@ export default function BlogEdit() {
         className="relative mt-12 flex w-[600px] flex-col gap-4"
       >
         <h1 className="font-secondary text-2xl">Editing...</h1>
-        <Input name="title" defaultValue={blog.title} />
-        <TextArea name="body" defaultValue={blog.body} />
+        {/* TODO: aria-invalid & aria-describedby */}
+        <Input
+          label="Blog title"
+          name="title"
+          defaultValue={blog.title}
+          required
+        />
+        <TextArea
+          label="Content"
+          name="body"
+          defaultValue={blog.body}
+          required
+          autoFocus
+        />
         <div className="mt-4 flex gap-4">
           <button className="w-fit rounded bg-rose-500 px-4 py-2 text-white hover:bg-rose-600 focus:bg-rose-400">
             <NavLink to={`/blog/${blog.id}`}>Discard</NavLink>

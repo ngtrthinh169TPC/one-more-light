@@ -242,6 +242,7 @@ focus:outline-[choose-your-color]
 - Testing (cypress, vitest)
 - Feature: Image hosting for Blog
 - Feature: Mail collector - Subscription (Mailgun?)
+- Feature: Sticky navbar [ref](https://www.youtube.com/watch?v=-JPul4SE6vc)
 
 # Coding Guideline
 

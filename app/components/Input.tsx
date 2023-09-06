@@ -1,53 +1,51 @@
-import { capitalize } from "lodash";
+import type { InputHTMLAttributes, RefObject } from "react";
 
-type InputProps = {
-  name: string;
-  defaultValue?: string;
-  error?: string | null;
-};
+interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
+  label: string;
+  ref?: RefObject<HTMLInputElement>;
+}
+
+interface TextAreaProps extends InputHTMLAttributes<HTMLTextAreaElement> {
+  label: string;
+  ref?: RefObject<HTMLTextAreaElement>;
+}
 
 interface SelectProps extends InputProps {
   options: string[];
 }
 
 // TODO: styling with consistency
+// TODO: error handling
 
-export function Input({ name, defaultValue, error }: InputProps) {
+export function Input({ label, ref, ...props }: InputProps) {
   return (
     <div>
       <label className="flex w-full flex-col gap-1">
-        <span>{capitalize(name)}: </span>
+        <span>{label}</span>
         <input
-          // ref={titleRef}
-          name={name}
-          defaultValue={defaultValue}
+          ref={ref}
           className="rounded-md border-2 border-neutral-300 px-3 py-1 focus-visible:outline-light-1-primary"
+          {...props}
           // aria-invalid={actionData?.errors?.title ? true : undefined}
           // aria-errormessage={
           //   actionData?.errors?.title ? "title-error" : undefined
           // }
         />
       </label>
-      {error ? (
-        <div className="pt-1 text-red-700" id="title-error">
-          {error}
-        </div>
-      ) : null}
     </div>
   );
 }
 
-export function TextArea({ name, defaultValue, error }: InputProps) {
+export function TextArea({ label, ref, ...props }: TextAreaProps) {
   return (
     <div>
       <label className="flex w-full flex-col gap-1">
-        <span>{capitalize(name)}: </span>
+        <span>{label}</span>
         <textarea
-          // ref={titleRef}
-          name={name}
-          defaultValue={defaultValue}
+          ref={ref}
           rows={8}
           className="rounded-md border-2 border-neutral-300 px-3 py-1 focus-visible:outline-light-1-primary"
+          {...props}
           // aria-invalid={actionData?.errors?.title ? true : undefined}
           // aria-errormessage={
           //   actionData?.errors?.title ? "title-error" : undefined
@@ -63,17 +61,21 @@ export function TextArea({ name, defaultValue, error }: InputProps) {
   );
 }
 
-export function Select({ name, error, options }: SelectProps) {
+// FIXME: Review and refactor this the same way we did with Input & TextArea
+export function Select({ label, options, ...props }: SelectProps) {
   return (
     <div>
-      <label className="flex w-full flex-col gap-1">
-        <span>{capitalize(name)}: </span>
+      <label htmlFor={props.id} className="flex w-full flex-col gap-1">
+        <span>{label}</span>
         <select
-          name={name}
+          name={props.name}
           className="rounded-md border-2 border-neutral-300 px-2 py-1 focus-visible:outline-light-1-primary"
         >
           {options.map((option) => (
-            <option key={`select-option-${name}-${option}`} value={option}>
+            <option
+              key={`select-option-${props.name}-${option}`}
+              value={option}
+            >
               {option}
             </option>
           ))}
