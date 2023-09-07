@@ -56,8 +56,10 @@ VOLUME /data
 # add shortcut for connecting to database CLI
 RUN echo "#!/bin/sh\nset -x\nsqlite3 \$DATABASE_URL" > /usr/local/bin/database-cli && chmod +x /usr/local/bin/database-cli
 
-# Entrypoint prepares the database.
+# Adjust entrypoint to be executable on Linux
 RUN chmod +x "./start.sh"
+
+# Entrypoint prepares the database.
 ENTRYPOINT [ "./start.sh" ]
 
 # Start the server by default, this can be overwritten at runtime
