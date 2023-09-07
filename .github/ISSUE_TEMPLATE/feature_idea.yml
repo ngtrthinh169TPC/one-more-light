@@ -1,0 +1,37 @@
+name: Feature Idea
+description: Have an idea to improve this project? Let me know~
+title: "[FEATURE]: "
+labels: ["enhancement"]
+assignees:
+  - ngtrthinh169TPC
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to help me improve
+  - type: textarea
+    id: your-big-idea
+    attributes:
+      label: Your Idea
+      description: What did I miss? Or what do you think it's fun to have here?
+      placeholder: Tell us your interest!
+      value: "I want ..."
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Disclaimer
+      # description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
+      description: By submitting this issue, you also acknowledge that I am not forced to make this feature but taking this as an inspiration.
+      options:
+        - label: I acknowledge that my idea will be used for this project with my consent
+          required: true
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
