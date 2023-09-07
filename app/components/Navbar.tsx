@@ -21,7 +21,9 @@ export default function Navbar() {
 
   return (
     <div className="flex w-full items-center justify-between bg-neutral-200 font-bold text-light-1-primary">
-      <div className="px-4 py-2">{user?.email}</div>
+      <div className="px-4 py-2">
+        {user?.email} - {user?.role}
+      </div>
       <div className="flex">
         {navigationList.map((item) => (
           <NavLink

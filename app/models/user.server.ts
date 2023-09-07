@@ -19,10 +19,6 @@ export async function createUser(
   password: string
 ) {
   const hashedPassword = await bcrypt.hash(password, 10);
-  let role: "user" | "admin" = "user";
-  if (username === "ngtrthinh" && email === "ng.tr.thinh@gmail.com") {
-    role = "admin";
-  }
 
   return prisma.user.create({
     data: {
@@ -33,7 +29,6 @@ export async function createUser(
           hash: hashedPassword,
         },
       },
-      role,
     },
   });
 }
