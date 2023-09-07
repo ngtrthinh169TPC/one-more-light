@@ -1,14 +1,19 @@
-import type { ActionArgs } from "@remix-run/node";
+import type { ActionArgs, LoaderArgs } from "@remix-run/node";
 import { json, redirect } from "@remix-run/node";
 import { Form, useActionData } from "@remix-run/react";
 import { Input, Select, TextArea } from "~/components/Input";
 import Navbar from "~/components/Navbar";
 import { blogTypeConst } from "~/constants/blog.const";
 import { createBlog } from "~/models/blog.server";
-import { requireUserId } from "~/session.server";
+import { requireAdmin } from "~/session.server";
+
+export const loader = async ({ request }: LoaderArgs) => {
+  await requireAdmin(request);
+  return null;
+};
 
 export const action = async ({ request }: ActionArgs) => {
-  const userId = await requireUserId(request);
+  const user = await requireAdmin(request);
 
   const formData = await request.formData();
   const title = formData.get("title");
@@ -31,7 +36,7 @@ export const action = async ({ request }: ActionArgs) => {
     title,
     body,
     type,
-    userId,
+    userId: user.id,
   });
 
   return redirect(`/blog/${blog.id}`);

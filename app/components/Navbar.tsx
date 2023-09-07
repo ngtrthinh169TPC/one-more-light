@@ -1,4 +1,5 @@
 import { Form, NavLink } from "@remix-run/react";
+import { UserRole } from "~/constants/user.const";
 import { useOptionalUser } from "~/utils";
 
 const navigationList = [
@@ -10,20 +11,15 @@ const navigationList = [
     title: "All blogs",
     endpoint: "/blog",
   },
-  {
-    title: "New blog",
-    endpoint: "/blog/new",
-  },
 ];
 
 export default function Navbar() {
   const user = useOptionalUser();
+  const isAdmin = user?.role === UserRole.ADMIN;
 
   return (
     <div className="flex w-full items-center justify-between bg-neutral-200 font-bold text-light-1-primary">
-      <div className="px-4 py-2">
-        {user?.email} - {user?.role}
-      </div>
+      <div className="px-4 py-2">{isAdmin ? "admin" : user?.email}</div>
       <div className="flex">
         {navigationList.map((item) => (
           <NavLink
@@ -34,6 +30,11 @@ export default function Navbar() {
             {item.title}
           </NavLink>
         ))}
+        {isAdmin ? (
+          <NavLink to="/blog/new" className="select-none px-4 py-2">
+            New blog
+          </NavLink>
+        ) : null}
         {user ? (
           <Form action="/logout" method="post">
             <button type="submit" className="select-none px-4 py-2">

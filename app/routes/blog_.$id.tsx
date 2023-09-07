@@ -7,10 +7,12 @@ import invariant from "tiny-invariant";
 import Navbar from "~/components/Navbar";
 import SvgDelete from "~/components/svgs/Delete";
 import SvgEditNote from "~/components/svgs/EditNote";
+import { UserRole } from "~/constants/user.const";
 import { deleteBlog, getBlog } from "~/models/blog.server";
+import { requireAdmin } from "~/session.server";
+import { useOptionalUser } from "~/utils";
 
-export const loader = async ({ params, request }: LoaderArgs) => {
-  // const userId = await requireUserId(request);
+export const loader = async ({ params }: LoaderArgs) => {
   invariant(params.id, "Blog with this title is not found");
 
   const blog = await getBlog({ id: params.id });
@@ -22,7 +24,7 @@ export const loader = async ({ params, request }: LoaderArgs) => {
 };
 
 export const action = async ({ params, request }: ActionArgs) => {
-  // const userId = await requireUserId(request);
+  await requireAdmin(request);
   invariant(params.id, "blog's id not found");
 
   await deleteBlog({ id: params.id });
@@ -31,6 +33,8 @@ export const action = async ({ params, request }: ActionArgs) => {
 };
 
 export default function BlogDetail() {
+  const user = useOptionalUser();
+  const isAdmin = user?.role === UserRole.ADMIN;
   const { blog } = useLoaderData<typeof loader>();
 
   return (
@@ -52,18 +56,20 @@ export default function BlogDetail() {
             })}{" "}
             • by <span className="italic">{blog.user.email}</span>
           </p>
-          <div className="absolute right-0 top-0 flex items-start gap-2">
-            <button>
-              <NavLink to="edit">
-                <SvgEditNote className="hover:fill-light-1-primary" />
-              </NavLink>
-            </button>
-            <Form method="post">
-              <button type="submit">
-                <SvgDelete className="hover:fill-light-1-primary" />
+          {isAdmin ? (
+            <div className="absolute right-0 top-0 flex items-start gap-2">
+              <button>
+                <NavLink to="edit">
+                  <SvgEditNote className="hover:fill-light-1-primary" />
+                </NavLink>
               </button>
-            </Form>
-          </div>
+              <Form method="post">
+                <button type="submit">
+                  <SvgDelete className="hover:fill-light-1-primary" />
+                </button>
+              </Form>
+            </div>
+          ) : null}
         </header>
         <div
           className="overflow-hidden text-ellipsis whitespace-pre-line"

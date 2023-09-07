@@ -3,6 +3,7 @@ import invariant from "tiny-invariant";
 
 import type { User } from "~/models/user.server";
 import { getUserById } from "~/models/user.server";
+import { UserRole } from "./constants/user.const";
 
 invariant(process.env.SESSION_SECRET, "SESSION_SECRET must be set");
 
@@ -25,7 +26,7 @@ export async function getSession(request: Request) {
 }
 
 export async function getUserId(
-  request: Request,
+  request: Request
 ): Promise<User["id"] | undefined> {
   const session = await getSession(request);
   const userId = session.get(USER_SESSION_KEY);
@@ -44,7 +45,7 @@ export async function getUser(request: Request) {
 
 export async function requireUserId(
   request: Request,
-  redirectTo: string = new URL(request.url).pathname,
+  redirectTo: string = new URL(request.url).pathname
 ) {
   const userId = await getUserId(request);
   if (!userId) {
@@ -61,6 +62,14 @@ export async function requireUser(request: Request) {
   if (user) return user;
 
   throw await logout(request);
+}
+
+export async function requireAdmin(request: Request) {
+  const user = await requireUser(request);
+
+  if (user.role === UserRole.ADMIN) return user;
+
+  throw redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
 }
 
 export async function createUserSession({
