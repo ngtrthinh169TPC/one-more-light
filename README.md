@@ -217,28 +217,19 @@ focus:outline-[choose-your-color]
 
 # TODO List
 
-- Feature: Preview for markdowns
-- Feature: error handling for inputs
-- Feature: confirm modal on delete blog
 - Feature: username for accounts
 - Remake: Join & Login pages
 - Feature: Tag system for Blogs
 - Restructure design system & tailwind config
-- Feature: Permissions (admin, user, guest)
 - Chore: Remove notes
 - New page: All Links
 - New page: Portfolio
 - Feature: Embed Rick Astley to unauthorized access
-- Feature: Meta for every pages
 - Feature: Blog Pagination
-- Feature: Blog filter/sort
 - Feature: Footer with contact
-- Feature: Dark mode (dark/light/system)
-- Feature: Responsive UI (3 breakpoints)
 - New page: Reports and suggestions
 - New page: Showcase
 - New page: Landing page (replacement for current root page)
-- Feature: Change favicon, metadata & try SEO optimizing
 - Testing (cypress, vitest)
 - Feature: Image hosting for Blog
 - Feature: Mail collector - Subscription (Mailgun?)

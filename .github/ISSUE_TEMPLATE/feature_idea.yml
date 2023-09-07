@@ -12,18 +12,17 @@ body:
   - type: textarea
     id: your-big-idea
     attributes:
-      label: Your suggestion
-      description: What is your suggestion?
+      label: Your idea
+      description: What is your suggestion to improve this project?
       placeholder: Let's improve this!
-      value: "I want "
     validations:
       required: true
   - type: textarea
     id: context
     attributes:
       label: Context of your idea
-      description: Why do you think it should be included in this project?
-      placeholder: "Oh, it will "
+      description: Why do you think it should be included in this project? At which context did it meet the need of this feature?
+      placeholder: "Oh, it will help"
     validations:
       required: true
   - type: textarea
