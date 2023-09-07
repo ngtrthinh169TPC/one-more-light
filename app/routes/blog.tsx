@@ -34,7 +34,7 @@ export default function BlogList() {
                   month: "short",
                   year: "numeric",
                 })}{" "}
-                • by <span className="italic">{item.createdBy.email}</span>
+                • by <span className="italic">{item.createdBy.username}</span>
               </p>
             </header>
             <div
