@@ -31,12 +31,10 @@ body:
     attributes:
       label: Do you have a suggestion of how to do this?
       description: Show me how we do it! *optional*
-      placeholder: ""
   - type: checkboxes
     id: terms
     attributes:
       label: Disclaimer
-      # description: By submitting this issue, you agree to follow our [Code of Conduct](https://example.com)
       description: By submitting this issue, you also acknowledge that I am not forced to make this feature but taking this as an inspiration.
       options:
         - label: I acknowledge that my idea will be used for this project with my consent
