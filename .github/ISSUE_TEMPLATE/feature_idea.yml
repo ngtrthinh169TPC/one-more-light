@@ -12,12 +12,26 @@ body:
   - type: textarea
     id: your-big-idea
     attributes:
-      label: Your Idea
-      description: What did I miss? Or what do you think it's fun to have here?
-      placeholder: Tell us your interest!
-      value: "I want ..."
+      label: Your suggestion
+      description: What is your suggestion?
+      placeholder: Let's improve this!
+      value: "I want "
     validations:
       required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Context of your idea
+      description: Why do you think it should be included in this project?
+      placeholder: "Oh, it will "
+    validations:
+      required: true
+  - type: textarea
+    id: direction
+    attributes:
+      label: Do you have a suggestion of how to do this?
+      description: Show me how we do it! *optional*
+      placeholder: ""
   - type: checkboxes
     id: terms
     attributes:
