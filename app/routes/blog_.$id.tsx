@@ -54,7 +54,7 @@ export default function BlogDetail() {
               month: "short",
               year: "numeric",
             })}{" "}
-            • by <span className="italic">{blog.createdBy.username}</span>
+            • by <span className="italic">{blog.createdBy.displayName}</span>
           </p>
           {isAdmin ? (
             <div className="absolute right-0 top-0 flex items-start gap-2">

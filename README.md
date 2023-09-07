@@ -217,7 +217,6 @@ focus:outline-[choose-your-color]
 
 # TODO List
 
-- Feature: username for accounts
 - Remake: Join & Login pages
 - Feature: Tag system for Blogs
 - Restructure design system & tailwind config

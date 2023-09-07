@@ -17,7 +17,7 @@ export const loader = async ({ request }: LoaderArgs) => {
 export const action = async ({ request }: ActionArgs) => {
   const formData = await request.formData();
   const email = formData.get("email");
-  const username = formData.get("username") as string;
+  const displayName = formData.get("displayName") as string;
   const password = formData.get("password");
   const redirectTo = safeRedirect(formData.get("redirectTo"), "/");
 
@@ -55,7 +55,7 @@ export const action = async ({ request }: ActionArgs) => {
     );
   }
 
-  const user = await createUser(email, username, password);
+  const user = await createUser(email, displayName, password);
 
   return createUserSession({
     redirectTo,
@@ -72,7 +72,7 @@ export default function Join() {
   const redirectTo = searchParams.get("redirectTo") ?? undefined;
   const actionData = useActionData<typeof action>();
   const emailRef = useRef<HTMLInputElement>(null);
-  const usernameRef = useRef<HTMLInputElement>(null);
+  const displayNameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -110,11 +110,11 @@ export default function Join() {
 
           <div>
             <Input
-              label="Username"
-              id="username"
-              ref={usernameRef}
-              name="username"
-              autoComplete="username"
+              label="Display name"
+              id="displayName"
+              ref={displayNameRef}
+              name="displayName"
+              autoComplete="display-name"
             />
           </div>
 
