@@ -20,7 +20,7 @@ export const loader = async ({ params, request }: LoaderArgs) => {
 };
 
 export const action = async ({ params, request }: ActionArgs) => {
-  await requireAdmin(request);
+  const user = await requireAdmin(request);
   invariant(params.id, "Blog with this title is not found");
 
   const formData = await request.formData();
@@ -39,6 +39,7 @@ export const action = async ({ params, request }: ActionArgs) => {
     id: params.id,
     title,
     body,
+    editorId: user.id,
   });
 
   return redirect(`/blog/${blog.id}`);

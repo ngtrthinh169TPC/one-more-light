@@ -12,7 +12,7 @@ export function getBlog({ id }: Pick<Blog, "id">) {
       title: true,
       viewCount: true,
       createdAt: true,
-      user: true,
+      createdBy: true,
     },
     where: { id },
   });
@@ -26,7 +26,7 @@ export function getAllBlogs() {
       body: true,
       title: true,
       createdAt: true,
-      user: true,
+      createdBy: true,
     },
     orderBy: { updatedAt: "desc" },
   });
@@ -36,18 +36,18 @@ export function createBlog({
   body,
   type,
   title,
-  userId,
+  creatorId,
 }: Pick<Blog, "body" | "type" | "title"> & {
-  userId: User["id"];
+  creatorId: User["id"];
 }) {
   return prisma.blog.create({
     data: {
       title,
       type,
       body,
-      user: {
+      createdBy: {
         connect: {
-          id: userId,
+          id: creatorId,
         },
       },
     },
@@ -64,6 +64,20 @@ export function editBlog({
   id,
   title,
   body,
-}: Pick<Blog, "id" | "title" | "body">) {
-  return prisma.blog.update({ where: { id }, data: { title, body } });
+  editorId,
+}: Pick<Blog, "id" | "title" | "body"> & {
+  editorId: User["id"];
+}) {
+  return prisma.blog.update({
+    where: { id },
+    data: {
+      title,
+      body,
+      editedBy: {
+        connect: {
+          id: editorId,
+        },
+      },
+    },
+  });
 }

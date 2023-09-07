@@ -36,7 +36,7 @@ export const action = async ({ request }: ActionArgs) => {
     title,
     body,
     type,
-    userId: user.id,
+    creatorId: user.id,
   });
 
   return redirect(`/blog/${blog.id}`);
