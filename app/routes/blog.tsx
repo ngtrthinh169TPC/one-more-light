@@ -4,10 +4,8 @@ import DOMPurify from "isomorphic-dompurify";
 import { marked } from "marked";
 import Navbar from "~/components/Navbar";
 import { getAllBlogs } from "~/models/blog.server";
-// import { requireUserId } from "~/session.server";
 
 export const loader = async () => {
-  // const userId = await requireUserId(request);
   const blogList = await getAllBlogs();
   return json({ blogList });
 };
