@@ -9,7 +9,7 @@ import SvgDelete from "~/components/svgs/Delete";
 import SvgEditNote from "~/components/svgs/EditNote";
 import { UserRole } from "~/constants/user.const";
 import { deleteBlog, getBlog } from "~/models/blog.server";
-import { requireAdmin } from "~/session.server";
+import { requireAdminId } from "~/session.server";
 import { useOptionalUser } from "~/utils";
 
 export const loader = async ({ params }: LoaderArgs) => {
@@ -24,7 +24,7 @@ export const loader = async ({ params }: LoaderArgs) => {
 };
 
 export const action = async ({ params, request }: ActionArgs) => {
-  await requireAdmin(request);
+  await requireAdminId(request);
   invariant(params.id, "blog's id not found");
 
   await deleteBlog({ id: params.id });

@@ -64,12 +64,12 @@ export async function requireUser(request: Request) {
   throw await logout(request);
 }
 
-export async function requireAdmin(request: Request) {
-  const user = await requireUser(request);
-
-  if (user.role === UserRole.ADMIN) return user;
-
-  throw redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+export async function requireAdminId(request: Request) {
+  const user = await getUser(request);
+  if (user?.role !== UserRole.ADMIN) {
+    throw redirect("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+  }
+  return user.id;
 }
 
 export async function createUserSession({

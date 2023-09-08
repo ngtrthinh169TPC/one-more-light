@@ -3,10 +3,10 @@ import { json } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import Navbar from "~/components/Navbar";
 import { getUserList } from "~/models/user.server";
-import { requireAdmin } from "~/session.server";
+import { requireAdminId } from "~/session.server";
 
 export const loader = async ({ request }: LoaderArgs) => {
-  await requireAdmin(request);
+  await requireAdminId(request);
   const userList = await getUserList();
   return json({ userList });
 };

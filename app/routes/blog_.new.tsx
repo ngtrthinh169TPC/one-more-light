@@ -5,15 +5,15 @@ import { Input, Select, TextArea } from "~/components/Input";
 import Navbar from "~/components/Navbar";
 import { blogTypeConst } from "~/constants/blog.const";
 import { createBlog } from "~/models/blog.server";
-import { requireAdmin } from "~/session.server";
+import { requireAdminId } from "~/session.server";
 
 export const loader = async ({ request }: LoaderArgs) => {
-  await requireAdmin(request);
+  await requireAdminId(request);
   return null;
 };
 
 export const action = async ({ request }: ActionArgs) => {
-  const user = await requireAdmin(request);
+  const userId = await requireAdminId(request);
 
   const formData = await request.formData();
   const title = formData.get("title");
@@ -36,7 +36,7 @@ export const action = async ({ request }: ActionArgs) => {
     title,
     body,
     type,
-    creatorId: user.id,
+    creatorId: userId,
   });
 
   return redirect(`/blog/${blog.id}`);

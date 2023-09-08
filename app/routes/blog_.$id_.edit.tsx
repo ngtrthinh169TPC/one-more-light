@@ -5,10 +5,10 @@ import invariant from "tiny-invariant";
 import { Input, TextArea } from "~/components/Input";
 import Navbar from "~/components/Navbar";
 import { editBlog, getBlog } from "~/models/blog.server";
-import { requireAdmin } from "~/session.server";
+import { requireAdminId } from "~/session.server";
 
 export const loader = async ({ params, request }: LoaderArgs) => {
-  await requireAdmin(request);
+  await requireAdminId(request);
   invariant(params.id, "Blog with this title is not found");
 
   const blog = await getBlog({ id: params.id });
@@ -20,7 +20,7 @@ export const loader = async ({ params, request }: LoaderArgs) => {
 };
 
 export const action = async ({ params, request }: ActionArgs) => {
-  const user = await requireAdmin(request);
+  const userId = await requireAdminId(request);
   invariant(params.id, "Blog with this title is not found");
 
   const formData = await request.formData();
@@ -39,7 +39,7 @@ export const action = async ({ params, request }: ActionArgs) => {
     id: params.id,
     title,
     body,
-    editorId: user.id,
+    editorId: userId,
   });
 
   return redirect(`/blog/${blog.id}`);
