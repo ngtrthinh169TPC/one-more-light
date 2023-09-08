@@ -217,13 +217,11 @@ focus:outline-[choose-your-color]
 
 # TODO List
 
-- Remake: Join & Login pages
 - Feature: Tag system for Blogs
 - Restructure design system & tailwind config
 - Chore: Remove notes
 - New page: All Links
 - New page: Portfolio
-- Feature: Embed Rick Astley to unauthorized access
 - Feature: Blog Pagination
 - Feature: Footer with contact
 - New page: Reports and suggestions
